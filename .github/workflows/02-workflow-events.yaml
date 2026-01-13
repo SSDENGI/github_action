@@ -1,5 +1,11 @@
 name: 02 - Workflow Events
-on: push
+on: 
+  push:
+
+  workflow_dispatch:
+
+  schedule:
+    - cron: * * * * *
 jobs:
   echo:
     runs-on: ubuntu-latest
@@ -7,4 +13,4 @@ jobs:
       - name: show the github context
         run: echo "${{toJson(github)}}"
       - name: show the event type
-        run: echo ${{github.event_name}}
+        run: echo "Event Triggering the Workflow is : ${{github.event_name}}"
