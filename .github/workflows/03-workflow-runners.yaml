@@ -15,7 +15,9 @@ jobs:
         run: echo "${{toJson(github)}}"
   windows-echo:
     runs-on: windows-latest
-    shell: bash
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Show OS
         run: echo "This job is running on $RUNNER_OS"
