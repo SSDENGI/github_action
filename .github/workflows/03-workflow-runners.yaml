@@ -1,0 +1,30 @@
+name : 03 - Workflow Runners
+on: 
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0/5 * * * *'  
+
+jobs:
+  ubuntu-echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show OS
+        run: echo "This job is running on $RUNNER_OS"
+      - name: Displaying Github context
+        run: echo "${{toJson(github)}}"
+  windows-echo:
+    runs-on: windows-latest
+    shell: bash
+    steps:
+      - name: Show OS
+        run: echo "This job is running on $RUNNER_OS"
+      - name: Displaying Github context
+        run: echo "${{toJson(github)}}"
+  macos-echo:
+    runs-on: macos-latest
+    steps:
+      - name: Show OS
+        run: echo "This job is running on $RUNNER_OS"
+      - name: Displaying Github context
+        run: echo "${{toJson(github)}}"
