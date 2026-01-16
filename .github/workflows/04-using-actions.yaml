@@ -6,23 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
-      - name: Printing Folders Before Checkout
-        run: ls -la
       - name: Checkout Code
         uses: actions/checkout@v3
-      - name: Checking working directory
-        working-directory: 04-using-actions/react-app
-        run: |
-          ls -la
-          pwd
-      - name: checking pwd directory
-        run: pwd
-      - name: Printing files before Install
-        run: |
-          cd 04-using-actions/react-app
-          ls -la
-      - name: cheking pwd directory
-        run: pwd
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -30,10 +15,11 @@ jobs:
       - name: Install Dependencies
         working-directory: 04-using-actions/react-app
         run: |
-          pwd
           npm ci    
-      - name: checking working directory path
-        run: pwd
-      - name: Printing Folders After Checkout
-        run: ls -la
+      - name: Run Unit Tests
+        working-directory: 04-using-actions/react-app
+        run: |
+          npm run test
+        
+        
       
