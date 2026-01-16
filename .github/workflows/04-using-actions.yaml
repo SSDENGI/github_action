@@ -13,6 +13,8 @@ jobs:
       - name: Checking working directory
         working-directory: 04-using-actions/react-app
         run: ls -la
+      - name: chekcing pwd directory
+        run: pwd
       - name: Printing files before Install
         run: |
           cd 04-using-actions/react-app
