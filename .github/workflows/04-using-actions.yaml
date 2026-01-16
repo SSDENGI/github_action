@@ -5,6 +5,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checking working directory
+        working-directory: 04-using-actions/react-app
+        run: ls -la
       - name: Printing Folders Before Checkout
         run: ls -la
       - name: Checkout Code
@@ -12,16 +15,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '20.x'
       - name: Printing files before Install
         run: |
           cd 04-using-actions/react-app
           ls -la
       - name: Install Dependencies
-        run: npm ci
-      - name: Checking working directory
-        working-directory: 04-using-actions/react-app
-        run: ls -la
+        run: npm ci    
       - name: checking working directory path
         run: pwd
       - name: Printing Folders After Checkout
