@@ -1,22 +1,40 @@
 name: 04 - Using Actions
 on: 
   push:
+
 jobs:
   build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 04-using-actions/react-app
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Unit Tests
+        run: npm run test
+
+  build2:
     runs-on: ubuntu-latest
     steps:
       
       - name: Checkout Code
         uses: actions/checkout@v3
-      - uses: actions/setup-node@v6
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 24
-      - run: npm ci
-      - run: npm test
+          node-version: '20.x'  
+          
       - name: Install Dependencies
         working-directory: 04-using-actions/react-app
         run: |
-          npm install
+          npm Install
           npm ci    
       - name: Run Unit Tests
         working-directory: 04-using-actions/react-app
