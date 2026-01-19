@@ -20,4 +20,4 @@ jobs:
       - name: Retrieve Variable
         run: |
           echo "Env Context :${{ env.MY_VAR }}"
-          echo "env_MY_VAR : ${{ env_MY_VAR }}"
+          echo "env_MY_VAR :  $env_MY_VAR"
