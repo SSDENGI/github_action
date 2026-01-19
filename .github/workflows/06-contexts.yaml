@@ -19,6 +19,5 @@ jobs:
           echo "Run Numbrer: ${{github.run_number}}"
       - name: Retrieve Variable
         run: |
-          echo "Env Context :${{ vars.MY_VAR }}"
-          echo "env_MY_VAR :  $env_MY_VAR"
-          echo " ${{toJson(env)}}"
+          echo "using Vars Context :${{ vars.MY_VAR }}"
+          echo "env_MY_VAR :  $vars_MY_VAR"
