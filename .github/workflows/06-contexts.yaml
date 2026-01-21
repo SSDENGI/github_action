@@ -1,4 +1,6 @@
 name : 06-contexts
+run-name: My custom workflow run name - ${{ runner.os }}
+
 on:
   push:
   
@@ -20,4 +22,4 @@ jobs:
       - name: Retrieve Variable
         run: |
           echo "using Vars Context :${{ vars.MY_VAR }}"
-          echo "env_MY_VAR :  $vars_MY_VAR"
+         
