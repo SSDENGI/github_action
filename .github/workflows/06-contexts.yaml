@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   inputs:
     debug:
-      descrtiption: 'Enable debug mode
+      description: 'Enable debug mode'
       type: boolean
       default: false
     
