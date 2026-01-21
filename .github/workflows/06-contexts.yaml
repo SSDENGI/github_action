@@ -5,12 +5,11 @@ on:
   push:
   
   workflow_dispatch:
-  inputs:
-    debug:
-      description: 'Enable debug mode'
-      type: boolean
-      default: false
-    
+    inputs:
+      debug:
+        description: 'Enable debug mode'
+        type: boolean
+        default: false
 
 jobs:
   echo-data:
