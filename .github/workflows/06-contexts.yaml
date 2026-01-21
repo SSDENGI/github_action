@@ -4,7 +4,6 @@ env:
   MY_WORKFLOW_VAR: workflow
   MY_OVERWRITTEN_VAR: workflow
 on:
-  push:
   workflow_dispatch:
     inputs:
       debug:
@@ -36,12 +35,11 @@ jobs:
         env:
           MY_OVERWRITTEN_VAR: step
         run: |
-          echo "Using Env Context : $MY_WORKFLOW_VAR"
-          echo "Using Env Context : $MY_JOB_VAR"
-          echo "Using Env Context : $MY_OVERWRITTEN_VAR"
+          echo "Using Workflow Env Context : $MY_WORKFLOW_VAR"
+          echo "Using Job Env Context : $MY_JOB_VAR"
+          echo "Using Step Context : $MY_OVERWRITTEN_VAR"
       - name: Retrive Environment Varibales without step env
         run: |
-          echo "Using Env Context : $MY_WORKFLOW_VAR"
-          echo "Using Env Context : $MY_JOB_VAR"
-          echo "Using Env Context : $MY_OVERWRITTEN_VAR"
-         
+          echo "Using Workflow Env Context : $MY_WORKFLOW_VAR"
+          echo "Using Job Env Context : $MY_JOB_VAR"
+          echo "Using Step Context : $MY_OVERWRITTEN_VAR"
