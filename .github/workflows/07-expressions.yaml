@@ -30,7 +30,7 @@ jobs:
           echo "Runner OS: ${{runner.os}}"
 
       - name: "[debug] Print when triggered from main"
-        if: ${{ inputs.debug == false &&  github.ref == 'refs/heads/main' }}
+        if:  inputs.debug == false &&  github.ref == 'refs/heads/main'
         run: |
           echo "${{ inputs.debug }}"
           echo "${{ github.ref }}"
