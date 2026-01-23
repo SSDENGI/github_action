@@ -32,6 +32,7 @@ jobs:
       - name: "[debug] Print when triggered from main"
         if: ${{ inputs.debug == true}} && ${{ github.ref == 'refs/heads/main' }}
         run: |
+          echo "${{ github.ref }}"
           echo "This run was triggered from the main branch."
 
       - name: Greet User
