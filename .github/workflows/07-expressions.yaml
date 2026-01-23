@@ -26,7 +26,7 @@ jobs:
         if: inputs.debug == true
         run: |
           echo "Branch: ${{github.ref}}"
-          echo "Commit SHA: ${{github.sha}}
+          echo "Commit SHA: ${{github.sha}}"
           echo "Runner OS: ${{runner.os}}"
 
       - name: "[debug] Print when triggered from main"
