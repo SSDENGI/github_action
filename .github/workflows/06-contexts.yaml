@@ -1,8 +1,9 @@
 name : 06-contexts
 run-name:  06 - Contexts | DEBUG - ${{ inputs.debug }}
-
+env:
+  MY_WORKFLOW_VAR: workflow
+  MY_OVERWRITTEN_VAR: workflow
 on:
-  push:
   workflow_dispatch:
     inputs:
       debug:
@@ -12,6 +13,9 @@ on:
 
 jobs:
   echo-data:
+    env:
+      MY_JOB_VAR: job
+      MY_OVERWRITTEN_VAR: job
     runs-on: ubuntu-latest
     steps:
       - name: Display information about the workflow run
@@ -26,4 +30,16 @@ jobs:
       - name: Retrieve Variable
         run: |
           echo "using Vars Context :${{ vars.MY_VAR }}"
-         
+
+      - name: Retrive Environment Variables
+        env:
+          MY_OVERWRITTEN_VAR: step
+        run: |
+          echo "Using Workflow Env Context : $MY_WORKFLOW_VAR"
+          echo "Using Job Env Context : $MY_JOB_VAR"
+          echo "Using Step Context : $MY_OVERWRITTEN_VAR"
+      - name: Retrive Environment Varibales without step env
+        run: |
+          echo "Using Workflow Env Context : $MY_WORKFLOW_VAR"
+          echo "Using Job Env Context : $MY_JOB_VAR"
+          echo "Using Step Context : $MY_OVERWRITTEN_VAR"
