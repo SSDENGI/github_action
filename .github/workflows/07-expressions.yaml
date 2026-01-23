@@ -13,7 +13,7 @@ jobs:
   echo:
     runs-on: ubuntu-latest
     steps:
-      - name: [debug] Print start-up data
+      - name: "[debug] Print start-up data"
         if: ${{inputs.debug == true}}
         run: |
           echo "Triggered by: ${{github.actor}}"
@@ -22,14 +22,14 @@ jobs:
           echo "Runner OS: ${{runner.os}}"
         
 
-      - name: [debug] Print start-up data - with expresion in if
+      - name: "[debug] Print start-up data - with expresion in if"
         if: inputs.debug == true
         run: |
           echo "Branch: ${{github.ref}}"
           echo "Commit SHA: ${{github.sha}}"
           echo "Runner OS: ${{runner.os}}"
 
-      - name: [debug] Print when triggered from main
+      - name: "[debug] Print when triggered from main"
         if: ${{ inputs.debug == true}} && ${{ github.ref == 'refs/heads/main' }}
         run: |
           echo "This run was triggered from the main branch."
