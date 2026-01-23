@@ -1,5 +1,7 @@
 name: 07 - Using Expressions
 run-name: 07 - Using Expressions | DEBUG - ${{inputs.debug == true && 'ON'||'OFF'}}
+env:
+  Input_Var: ${{inputs.debug || 'Not Set'}}
 on:
   push:
 
@@ -39,3 +41,6 @@ jobs:
 
       - name: Greet User
         run: echo "Hello, world!"
+
+      - name: "print environment variable"
+        run: echo "Input_Var is set to: $Input_Var"
