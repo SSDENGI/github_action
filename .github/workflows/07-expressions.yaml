@@ -7,7 +7,7 @@ on:
       debug:
         description: 'Enable debug mode'
         type: boolean
-        default: false
+        default: true
       
 jobs:
   echo:
@@ -30,7 +30,7 @@ jobs:
           echo "Runner OS: ${{runner.os}}"
 
       - name: "[debug] Print when triggered from main"
-        if: ${{ inputs.debug == true}} && ${{ github.ref}} == 'refs/heads/main'
+        if: ${{ inputs.debug}} == true && ${{ github.ref}} == 'refs/heads/main'
         run: |
           echo "${{ github.ref }}"
           echo "This run was triggered from the main branch."
