@@ -25,7 +25,7 @@ jobs:
       - name: Overwrite job level
         env: 
           OVERWRITTEN: I am the step level value
-          UNDEFINED_VAR_WITH_DEFAULT:${{vars.UNDEFINED_VAR || testing}} 
+          UNDEFINED_VAR_WITH_DEFAULT: ${{vars.UNDEFINED_VAR || testing}} 
         run: |
           echo "Step env var: $OVERWRITTEN"
   echo2:

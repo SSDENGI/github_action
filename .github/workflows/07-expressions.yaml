@@ -3,7 +3,6 @@ run-name: 07 - Using Expressions | DEBUG - ${{inputs.debug == true && 'ON'||'OFF
 env:
   Input_Var: ${{inputs.debug || 'Not Set'}}
 on:
-  push:
 
   workflow_dispatch:
     inputs:
