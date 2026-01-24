@@ -43,4 +43,4 @@ jobs:
         run: echo "Hello, world!"
 
       - name: "print environment variable"
-        run: echo "Input_Var is set to: $Input_Var"
+        run: echo "Input_Var is set to $Input_Var"
