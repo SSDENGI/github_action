@@ -25,5 +25,36 @@ jobs:
       - name: Overwrite job level
         env: 
           OVERWRITTEN: I am the step level value
+          UNDEFINED_VAR_WITH_DEFAULT:${{vars.UNDEFINED_VAR || testing}} 
         run: |
           echo "Step env var: $OVERWRITTEN"
+  echo2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Variables
+        run: |
+          echo "Org var : ${{vars.ORG_VAR}}"
+          echo "Org overwritten var : ${{vars.OVERWRITTEN_VAR}}"
+          echo "Repo var : ${{vars.REPOSITORY_VAR}}"
+  echo-prod:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: print prod Variables
+        run: |
+          echo "Org var : ${{vars.ORG_VAR}}"
+          echo "Org overwritten var : ${{vars.OVERWRITTEN_VAR}}"
+          echo "Repo var : ${{vars.REPOSITORY_VAR}}"
+          echo "Prod env var: ${{vars.TARGET_VAR}}"
+
+  echo-undefined:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Undefined Variables
+        run: |
+          echo "Undefined var : ${{vars.UNDEFINED_VAR|| 'Default Value'}}"
+
+
+          
+
+
