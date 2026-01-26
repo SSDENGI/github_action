@@ -20,7 +20,7 @@ jobs:
         if: ${{ success()}}
         run: |
           echo " I will print if previous step is successful "
-      - namne: I will execute
+      - name: I will execute
         if: ${{ failure()}}
         run: |
           echo " I will print if previous step failed "
