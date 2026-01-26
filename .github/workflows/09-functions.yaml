@@ -13,7 +13,7 @@ jobs:
   echo1:
     runs-on: ubuntu-latest
     steps:
-      - name: Print PR title
+      - name: Print PR titles
         run: |
           echo "PR Title: ${{github.event.pull_request.title}}"
       - name: Print PR labels
