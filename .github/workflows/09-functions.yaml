@@ -38,7 +38,7 @@ jobs:
         run: |
           echo " I will print if previous step failed "
 
-      - name: i Will Definately execute
+      - name: i Will Definately executes
         if: ${{ always()}}
         run: |
           echo "I will always print, except when the workflow is cancelled"
