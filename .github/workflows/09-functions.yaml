@@ -11,7 +11,7 @@ on:
 
 jobs:
   echo1:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latests
     steps:
       - name: Print PR titles
         run: |
