@@ -16,13 +16,9 @@ jobs:
       - name: Print PR titles
         run: |
           echo "PR Title: ${{github.event.pull_request.title}}"
-      - name: Test success Functions
-        if: success()
-        run: echo " Previous steps were successful "
       - name: Print PR labels
         run: |
-          echo " PR Labels:  '${{toJSON(github.event.pull_request.labels)}}'"
-     
+          echo " PR Labels:  ${{toJSON(github.event.pull_request.labels)}}"
       - name: Failing step
         run: |
           exit 1
