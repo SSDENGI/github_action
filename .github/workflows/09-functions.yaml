@@ -19,7 +19,7 @@ jobs:
       - name: Print PR labels
         run: |
           echo " PR Labels"
-          echo "${{toJSON(github.event.pull_request.labels)}}"
+          echo 'PR Labels: "${{toJSON(github.event.pull_request.labels)}}"'
       - name: Failing step
         run: |
           exit 1
