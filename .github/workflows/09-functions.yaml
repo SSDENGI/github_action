@@ -1,12 +1,12 @@
 name: 09 - Using Functions
 on:
-  pull_request:
-    branches:
-      - main
-    types:
-      - opened
-      - synchronize
-      - reopened
+  # pull_request:
+  #   branches:
+  #     - main
+  #   types:
+  #     - opened
+  #     - synchronize
+  #     - reopened
   workflow_dispatch:
 
 jobs:
@@ -18,14 +18,15 @@ jobs:
           echo "PR Title: ${{github.event.pull_request.title}}"
       - name: Print PR labels
         run: |
-          echo ' PR Labels:  ${{toJSON(github.event.pull_request.labels)}}'
+          echo " PR Labels"
+          echo 'PR Labels: "${{toJSON(github.event.pull_request.labels)}}"'
       - name: Failing step
         run: |
           exit 1
       - name: Bug step
         if: ${{ failure() && contains(github.event.pull_request.title, 'fix') }}
         run: |
-          echo " I am a bug fix"
+          echo " I am a bug fixs"
       - name: Sleep for 20 seconds
         run: |
           sleep 20
