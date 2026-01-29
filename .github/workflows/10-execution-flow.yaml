@@ -36,6 +36,7 @@ jobs:
   e2e-tests:
     runs-on: ubuntu-latest
     needs: deploy-nonprod
+    if: ${{ failure()}}
     steps:
       - name: Running E2E tests
         run: |
@@ -44,6 +45,7 @@ jobs:
   load-tests:
     runs-on: ubuntu-latest
     needs: deploy-nonprod
+    if: ${{ failure()}}
     steps: 
       - name: Running load tests
         run: |
