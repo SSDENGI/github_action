@@ -28,6 +28,7 @@ jobs:
     needs: 
       - lint-build
       - unit-tests
+    if: ${{ failure()}}
     steps:
       - name: Deploying to nonprod
         run: |
