@@ -53,6 +53,7 @@ jobs:
 
   deploy-prod:
     runs-on: ubuntu-latest
+    if: ${{ failure()}}
     needs:
       - e2e-tests
       - load-tests
