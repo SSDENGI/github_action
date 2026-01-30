@@ -3,13 +3,10 @@ on:
   workflow_dispatch:
     inputs:
       target:
-        type: choice
+        type: string
         description: "Which environment"
         required: true
-        choices:
-          - dev
-          - qa
-          - prod
+        default: prod
       dry_run:
         type: boolean
         description: "Skip deployment and only print build output"
