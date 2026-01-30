@@ -2,21 +2,25 @@ name: 11 - Working with Inputs
 on:
   workflow_dispatch:
     inputs:
-      dry-run:
+      target:
+        type: choice
+        description: "Which environment"
+        required: true
+        choices:
+          - dev
+          - qa
+          - prod
+      dry_run:
         type: boolean
         description: "Skip deployment and only print build output"
         default: false
-      target:
-        type: environment
-        description: "Which environment the workflow will target"
-        required: true
+      # target:
+      #   type: environment
+      #   description: "Which environment the workflow will target"
+      #   required: true
       tag:
-        type: choice
+        type: string
         description: "Release from which to build and deploy"
-        choices:
-          - v1
-          - v2
-          - v3
         default: v3
 
 jobs:
@@ -28,7 +32,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    if: ${{inputs.dry-run == 'false'}}
+    if: ${{inputs.dry_run == false}}
     environment: ${{inputs.target}}
     steps:
       - name:  Deploy
