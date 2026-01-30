@@ -2,19 +2,14 @@ name: 11 - Working with Inputs
 on:
   workflow_dispatch:
     inputs:
-      target:
-        type: string
-        description: "Which environment"
-        required: true
-        default: prod
       dry_run:
         type: boolean
         description: "Skip deployment and only print build output"
         default: false
-      # target:
-      #   type: environment
-      #   description: "Which environment the workflow will target"
-      #   required: true
+      target:
+        type: environment
+        description: "Which environment the workflow will target"
+        required: true
       tag:
         type: string
         description: "Release from which to build and deploy"
