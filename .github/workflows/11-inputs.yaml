@@ -2,7 +2,7 @@ name: 11 - Working with Inputs
 on:
   workflow_dispatch:
     inputs:
-      dry-run:
+      dry_run:
         type: boolean
         description: "Skip deployment and only print build output"
         default: false
@@ -28,7 +28,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    if: ${{inputs.dry-run == 'false'}}
+    if: ${{inputs.dry_run == false}}
     environment: ${{inputs.target}}
     steps:
       - name:  Deploy
