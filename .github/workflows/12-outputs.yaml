@@ -18,6 +18,8 @@ jobs:
       - name: Build
         id: build
         run: echo "status=${{inputs.build-status}}">>$GITHUB_OUTPUT
+      - name: display github output
+        run: echo $GITHUB_OUTPUT
 
   deploy:
     runs-on: ubuntu-latest
