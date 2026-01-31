@@ -20,6 +20,8 @@ jobs:
         run: echo "status=${{inputs.build-status}}">>$GITHUB_OUTPUT
       - name: display github output
         run: echo $GITHUB_OUTPUT
+      - name: display content of file
+        run: cat $GITHUB_OUTPUT
 
   deploy:
     runs-on: ubuntu-latest
