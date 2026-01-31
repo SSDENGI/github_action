@@ -21,7 +21,7 @@ jobs:
       - name: display github output
         run: echo $GITHUB_OUTPUT
       - name: display content of file
-        run: vim $GITHUB_OUTPUT
+        run: cat "$GITHUB_OUTPUT"
 
   deploy:
     runs-on: ubuntu-latest
