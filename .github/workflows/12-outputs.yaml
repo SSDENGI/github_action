@@ -15,6 +15,7 @@ jobs:
       output1: ${{ steps.build.outputs.output1}}
     steps:
       - name: Print GITHUB_OUTPUT path
+        id: test
         run: echo "$GITHUB_OUTPUT"
       - name: Build
         id: build
@@ -23,9 +24,15 @@ jobs:
           echo "status=${{inputs.build-status}}">>$GITHUB_OUTPUT
           echo "output1=value1">>$GITHUB_OUTPUT
           echo "output2=value2">>$GITHUB_OUTPUT
-          echo "mistake=true">>$GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
-          
+          echo "mistake=true">$GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
+      - name: displying step outputs
+        run: |
+          echo "step output : ${{steps.build.outputs}}"
+          echo "root level: ${{steps.build}}
+          echo "more root: ${{toSON(steps)}}"
+
       # - name: Step with mistake
       #   run: |
           
