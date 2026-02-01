@@ -25,13 +25,14 @@ jobs:
           echo "output1=value1">>$GITHUB_OUTPUT
           echo "output2=value2">>$GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
+          echo "after mistake"
           echo "mistake=true">$GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
       - name: displying step outputs
         run: |
-          echo "step output : ${{steps.build.outputs}}"
-          echo "root level: ${{steps.build}}
-          echo echo "${{toJSON(steps)}}"
+          echo "step output : ${{toJSON(steps.build.outputs)}}"
+          echo "root level: ${{toJSON(steps.build)}}"
+          echo "${{toJSON(steps)}}"
           echo "more root: ${{toJSON(steps)}}"
 
       # - name: Step with mistake
