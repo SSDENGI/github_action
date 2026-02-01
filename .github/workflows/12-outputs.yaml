@@ -40,3 +40,4 @@ jobs:
       - name: Print Outputs
         run: |
           echo "Output1: ${{needs.build.outputs.output1}}"
+          cat $GITHUB_OUTPUT
