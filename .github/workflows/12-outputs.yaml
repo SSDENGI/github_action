@@ -31,7 +31,7 @@ jobs:
         run: |
           echo "step output : ${{steps.build.outputs}}"
           echo "root level: ${{steps.build}}
-          echo "more root: ${{toSON(steps)}}"
+          echo "more root: ${{toJSON(steps)}}"
 
       # - name: Step with mistake
       #   run: |
