@@ -22,6 +22,8 @@ jobs:
           echo "status=${{inputs.build-status}}">>$GITHUB_OUTPUT
           echo "output1=value1">>$GITHUB_OUTPUT
           echo "output2=value2">>$GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
+
       - name: Print the GITHUB_OUTPUT content
         run: |
           cat $GITHUB_OUTPUT
