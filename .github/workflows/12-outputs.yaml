@@ -26,7 +26,7 @@ jobs:
           echo "output2=value2">>$GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
           echo "after mistake"
-          echo "mistake=true">$GITHUB_OUTPUT
+          echo "mistake=true">>$GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
       - name: displying step outputs
         run: |
