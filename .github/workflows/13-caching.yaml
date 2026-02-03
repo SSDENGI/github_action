@@ -20,6 +20,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
+      - name: list modules
+        run: ls -la
       - name: Install dependenciess
         run: npm ci
       - name: Testing
