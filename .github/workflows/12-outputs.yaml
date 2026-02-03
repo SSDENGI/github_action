@@ -12,16 +12,33 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       build-status: ${{ steps.build.outputs.status}}
+      output1: ${{ steps.build.outputs.output1}}
     steps:
       - name: Print GITHUB_OUTPUT path
+        id: test
         run: echo "$GITHUB_OUTPUT"
       - name: Build
         id: build
-        run: echo "status=${{inputs.build-status}}">>$GITHUB_OUTPUT
-      - name: display github output
-        run: echo $GITHUB_OUTPUT
-      - name: display content of file
-        run: cat "$GITHUB_OUTPUT"
+        run: |
+          echo "$GITHUB_OUTPUT"
+          echo "status=${{inputs.build-status}}">>$GITHUB_OUTPUT
+          echo "output1=value1">>$GITHUB_OUTPUT
+          echo "output2=value2">>$GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
+          echo "after mistake"
+          cat $GITHUB_OUTPUT
+      - name: displying step outputs
+        run: |
+          echo "step output : ${{toJSON(steps.build.outputs)}}"
+          echo "root level: ${{toJSON(steps.build)}}"
+          echo "${{toJSON(steps)}}"
+          echo "more root: ${{toJSON(steps)}}"
+
+      - name: Step with mistake
+        id: mistake
+        run: |
+          echo "mistake=true">$GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
 
   deploy:
     runs-on: ubuntu-latest
@@ -30,3 +47,7 @@ jobs:
     steps:
       - name: Deploy
         run: echo "Deploying"
+      - name: Print Outputs
+        run: |
+          echo "Output1: ${{needs.build.outputs.output1}}"
+          cat $GITHUB_OUTPUT
