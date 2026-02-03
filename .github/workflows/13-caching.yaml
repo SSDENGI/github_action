@@ -14,10 +14,6 @@ jobs:
       run:
         working-directory: 13-caching/react-app
     steps:
-      - name: check current working-directory
-        run: |
-          echo "testing working directory"
-          pwd
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Node
@@ -32,3 +28,7 @@ jobs:
         run: npm run build
       - name: Deploying to nonprod
         run: echo "Deploying to nonprod, ${GITHUB_SHA}"
+      - name: check current working-directory
+        run: |
+          echo "testing working directory"
+          pwd
