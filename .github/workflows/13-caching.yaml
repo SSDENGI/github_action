@@ -15,7 +15,9 @@ jobs:
         working-directory: 13-caching/react-app
     steps:
       - name: check current working-directory
-        run: pwd
+        run: |
+          echo "testing working directory"
+          pwd
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Node
