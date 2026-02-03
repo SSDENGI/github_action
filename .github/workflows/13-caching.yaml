@@ -12,18 +12,25 @@ jobs:
     working-directory: ./13-caching/react-app
     steps:
       - name: check current working-directory
+        working-directory: ./13-caching/react-app
         run: pwd
       - name: Checkout code
+        working-directory: ./13-caching/react-app
         uses: actions/checkout@v3
       - name: Setup Node
+        working-directory: ./13-caching/react-app
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
       - name: Install dependencies
+        working-directory: ./13-caching/react-app
         run: npm ci
       - name: Testing
+        working-directory: ./13-caching/react-app
         run: npm run test 
       - name: Building
+        working-directory: ./13-caching/react-app
         run: npm run build
       - name: Deploying to nonprod
+        working-directory: ./13-caching/react-app
         run: echo "Deploying to nonprod, ${GITHUB_SHA}"
