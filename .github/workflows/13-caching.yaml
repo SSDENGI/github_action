@@ -9,13 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    working-directory: ./13-caching/react-app
     steps:
       - name: check current working-directory
-        working-directory: ./13-caching/react-app
         run: pwd
       - name: Checkout code
-        working-directory: ./13-caching/react-app
         uses: actions/checkout@v3
       - name: Setup Node
         working-directory: ./13-caching/react-app
