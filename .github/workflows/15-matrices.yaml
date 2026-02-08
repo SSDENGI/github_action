@@ -4,7 +4,7 @@ on:
 jobs:
   backwards-compatibility:
     runs-on: ubuntu-latest
-    startegy:
+    strategy:
       matrix:
         node_version:
           - 18.x
@@ -21,4 +21,4 @@ jobs:
           node-version: ${{ matrix.node_version }}
       - name: Perform some tests
         run: |
-          echo "Running tests on OS ${{matrix.os}} and NodeJS {{matrix.node_version}}"
+          echo "Running tests on OS ${{matrix.os}} and NodeJS {{matrix.}}
