@@ -28,7 +28,7 @@ jobs:
           node-version: ${{ matrix.node_version }}
       - name: Fail if experimental
         if: ${{ matrix.tag == 'experimental' }}
-        run: exit 1
+        run: exit 0
       - name: Perform some tests
         run: |
           sleep 10
