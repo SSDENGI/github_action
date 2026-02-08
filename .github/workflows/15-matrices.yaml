@@ -19,7 +19,7 @@ jobs:
             tag: experimental
         #   - node_version: 18.x
         #     tag: experimental
-      fail-fast: false
+      fail-fast: true
     name: Node ${{ matrix.os}} - ${{ matrix.node_version }}
     steps:
       - name: Setup node
