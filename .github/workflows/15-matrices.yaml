@@ -19,7 +19,7 @@ jobs:
           - node_version: 18.x
             tag: experimental
         fail-fast: 
-          - false
+          - true
     name: Node ${{ matrix.os}} - ${{ matrix.node_version }}
     steps:
       - name: Setup node
@@ -28,7 +28,7 @@ jobs:
           node-version: ${{ matrix.node_version }}
       - name: Fail if experimental
         if: ${{ matrix.tag == 'experimental' }}
-        run: exit 0
+        run: exit 1
       - name: Perform some tests
         run: |
           sleep 10
