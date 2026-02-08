@@ -16,6 +16,8 @@ jobs:
         include:
           - os: ubuntu-latest
             tag: experimental
+          - node_version: 18.x
+            tag: experimental
         fail-fast: 
           - false
     name: Node ${{ matrix.os}} - ${{ matrix.node_version }}
