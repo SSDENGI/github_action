@@ -35,25 +35,25 @@ jobs:
       - name: Upload test results
         run: echo "Uploading test results"
 
-include-example:
-  runs-on: ubuntu-latest
-  name: ${{ matrix.color }} - ${{ matrix.shape }} - ${{ matrix.size }}
-  strategy:
-    matrix:
-      color:
-        - red
-        - green
-      shape:
-        - circle
-        - square
-      size:
-        - small
-        - large
-    include:
-      - color: red
-        shape: triangle
-  steps:
-    - name: dummy steps
-      run: echo "${{matrix.color}} - ${{matrix.shape}} - ${{matrix.size}}"
+  include-example:
+    runs-on: ubuntu-latest
+    name: ${{ matrix.color }} - ${{ matrix.shape }} - ${{ matrix.size }}
+    strategy:
+      matrix:
+        color:
+          - red
+          - green
+        shape:
+          - circle
+          - square
+        size:
+          - small
+          - large
+      include:
+        - color: red
+          shape: triangle
+    steps:
+      - name: dummy steps
+        run: echo "${{matrix.color}} - ${{matrix.shape}} - ${{matrix.size}}"
 
-    
+      
