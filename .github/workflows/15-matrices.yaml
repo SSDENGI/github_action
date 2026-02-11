@@ -62,7 +62,7 @@ jobs:
             size: medium
         exclude:
           - color: green
-          - shape: circle
+            shape: circle
     steps:
       - name: dummy steps
         run: echo "${{matrix.color}} - ${{matrix.shape}} - ${{matrix.size}} - ${{matrix.opacity}}"
