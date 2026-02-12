@@ -1,18 +1,45 @@
 name : 16 - Working with Environments
 on: 
   workflow_dispatch:
-    inputs:
-      target-env:
-        type: environment
-        default: staging
-run-name: 16 - Working with Environments | env ${{ inputs.target-env }}
+    # inputs:
+    #   target-env:
+    #     type: environment
+    #     default: staging
+# run-name: 16 - Working with Environments | env ${{ inputs.target-env }}
 jobs:
-  echo:
+  # echo:
+  #   runs-on: ubuntu-latest
+  #   environment: ${{inputs.target-env}}
+  #   steps:
+  #     - name: Echo vars
+  #       run: |
+  #         echo "Env variable: ${{vars.MY_ENV_VALUE || 'default value'}}" 
+  deploy-staging:
     runs-on: ubuntu-latest
-    environment: ${{inputs.target-env}}
+    environment: staging
+    steps:
+      - name: Deploying to staging
+        echo "Env variable: ${{vars.MY_ENV_VALUE || 'default value'}}" 
+
+  e2e-tests:
+    nedds: deploy-staging
+    runs-on: ubuntu-latest
+    steps:
+      - name: E2E tests
+        run : echo "Running E2E"
+  deploy-prod:
+    needs: e2e-tests
+    runs-on: ubuntu-latest
+    environment: prod
     steps:
       - name: Echo vars
         run: |
-          echo "Env variable: ${{vars.MY_ENV_VALUE || 'default value'}}" 
+          echo "Deploying to prod"
+          echo " Env variable: ${{vars.MY_ENV_VALUE || 'default value'}}"
+
+
+      
+        
+        
       
 
