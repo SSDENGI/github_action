@@ -10,7 +10,7 @@ jobs:
         run: echo "Env variable  ${{vars.MY_ENV_VALUE || 'default value'}}" 
 
   e2e-tests:
-    nedds: deploy-staging
+    needs: deploy-staging
     runs-on: ubuntu-latest
     steps:
       - name: E2E tests
