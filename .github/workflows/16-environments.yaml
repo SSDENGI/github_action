@@ -19,7 +19,7 @@ jobs:
     environment: staging
     steps:
       - name: Deploying to staging
-        echo "Env variable: ${{vars.MY_ENV_VALUE || 'default value'}}" 
+        run: echo "Env variable: ${{vars.MY_ENV_VALUE || 'default value'}}" 
 
   e2e-tests:
     nedds: deploy-staging
