@@ -1,0 +1,67 @@
+name: adf ci cd
+on:
+  push:
+    branches:
+      - master
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: setup node jobs
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Install npm 
+        run: npm Install
+        working-directory: ${{github.workspace}}/build
+      - name: validate adf
+        run: npm run build validate  ${{github.workspace}}/ /subscriptions/ee998db0-384c-47f0-8674-11be01fea10d/resourceGroups/g_dev_shankar_cicd/providers/Microsoft.DataFactory/factories/adf-dev-shankar-cicd
+        working-directory: ${{github.workspace}}/build
+
+      - name: Validate and Genrate ARM Templates
+        run: npm run build export ${{github.workspace}} /subscriptions/ee998db0-384c-47f0-8674-11be01fea10d/resourceGroups/g_dev_shankar_cicd/providers/Microsoft.DataFactory/factories/adf-dev-shankar-cicd 'ExportedArmTemplate'
+        working-directory: ${{github.workspace}}/build
+
+      - name: list build folder
+        run : ls -la
+        working-directory: ${{github.workspace}}/build
+      
+      - name: export ARM Templates
+        uses: actions/upload-artifact@v4
+        with:
+          name: ExportedArmTemplate
+          path: ${{github.workspace}}/build/ExportedArmTemplate
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download ARM Templates
+        uses: actions/download-artifact@v4
+        with:
+          name: Expor=-edArmTemplate
+
+      -  name: list folder
+         run : ls -la
+      
+      - name: Azure login
+        uses: Azure/login@v2.3.0
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID}}
+          enable-AzPSSession: true
+      - name: Deploy ARM Template
+        uses: Azure/arm-deploy@v2
+        with:
+          resourceGroupName: rg_test_shankar_cicd
+          dataFactoryName: adf-test-shankar-cicd
+          armTemplateFile: ARMTemplateForFactory.json
+          armTemplateParametersFile: ARMTemplateParametersForFactory.json
+          additionalParameters: ls_az_dl_accountKey=${{secrets.TEST_DATALAKE_SECRET}} ls_az_dl_properties_typeProperties_url=https://sadltest.dfs.core.windows.net
