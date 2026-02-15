@@ -27,6 +27,7 @@ jobs:
         with:
           node-version: '18.x'
           working-dir: ${{env.working-directory}}
+          target-env: ${{inputs.target-env}}
       - name: test
         run: npm run test
       - name: build
