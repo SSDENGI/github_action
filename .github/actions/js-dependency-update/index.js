@@ -39,3 +39,5 @@ if (gitStatus.stdout.length > 0){
   core.info('there are no update availble')
 }
 }
+
+run();
