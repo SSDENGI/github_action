@@ -29,7 +29,11 @@ core.info(`[js-dependency-update] : base branch is ${baseBranch}`);
 core.info(`[js-dependency-update] : target branch is ${targetBranch}`);
 core.info(`[js-dependency-update] : working directory is ${workingDirectory}`);
 
-await exec.exec('npm-update',[],{cwd: workingDirectory});
+await exec.exec('npm', ['ci'], { cwd: workingDirectory });
+
+await exec.exec('npm', ['update'], { cwd: workingDirectory });
+
+// await exec.exec('npm',[],{cwd: workingDirectory});
 
 const gitStatus = await exec.getExecOutput('git status -s package*.json',[],{cwd: workingDirectory});
 
