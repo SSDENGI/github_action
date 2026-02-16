@@ -11,7 +11,7 @@ on:
       working-dir:
         type: string
         default: 17-custom-actions/react-app
-run-name: 17 - 2 - Custom Actions - JS | BB - ${{ inputs.base-branch }}  TB - ${{ inputs.target-branch }} - WD ${{ inputs.working-dir }} - debug: ${{ inputs.debug }}
+run-name: 17 - 2 - Custom Actions - JS | BB - ${{ inputs.base-branch }}  TB - ${{ inputs.target-branch }} - WD ${{ inputs.working-dir }} 
 
 
 jobs:
