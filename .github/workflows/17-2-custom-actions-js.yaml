@@ -27,5 +27,5 @@ jobs:
           target-branch: ${{ inputs.target-branch}}
           working-directory: ${{ inputs.working-dir }}
           gh-token: ${{ secrets.GITHUB_TOKEN }}
-      
-       
+      - name: successful messages
+        run: echo "successful"
