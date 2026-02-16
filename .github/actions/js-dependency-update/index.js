@@ -29,7 +29,7 @@ core.info(`[js-dependency-update] : base branch is ${baseBranch}`);
 core.info(`[js-dependency-update] : target branch is ${targetBranch}`);
 core.info(`[js-dependency-update] : working directory is ${workingDirectory}`);
 
-await exec.exec('npm', ['ci'], { cwd: workingDirectory });
+await exec.exec('npm', ['install'], { cwd: workingDirectory });
 
 await exec.exec('npm', ['update'], { cwd: workingDirectory });
 
