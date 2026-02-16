@@ -10,7 +10,7 @@ async function run() {
   const targetBranch = core.getInput('target-branch');
   const ghToken = core.getInput('gh-token');
   const workingDirectory = core.getInput('working-directory');
-  const debug = core.getInput('debug');
+  const debug = core.getBooleanInput('debug');
   core.setSecret(ghToken);
 
 if ( !validateBranchName({branchName: baseBranch})) {
@@ -25,9 +25,9 @@ if( !validateDirectoryName({dirName: workingDirectory})) {
     core.setFailed(" Invalid working directory name. Only letters, numbers, underscores, hyphens and slashes are allowed.")
     return;
 }
-core.info('[js-dependency update] : base branch is ${baseBranch}');
-core.info ('[js-dependency update] : target branch is ${targetBranch}');
-core.info ('[js-dependency update] : working directory is ${workingDirectory}');
+core.info(`[js-dependency-update] : base branch is ${baseBranch}`);
+core.info(`[js-dependency-update] : target branch is ${targetBranch}`);
+core.info(`[js-dependency-update] : working directory is ${workingDirectory}`);
 
 await exec.exec('npm-update',[],{cwd: workingDirectory});
 
