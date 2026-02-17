@@ -37,6 +37,11 @@ await exec.exec('npm', ['update'], { cwd: workingDirectory });
 
 const gitStatus = await exec.getExecOutput('git status -s package*.json',[],{cwd: workingDirectory});
 
+const displayOutput = await exec.getExecOutput("pwd",[],{cwd: workingDirectory});
+core.info(`current working directory is --------------- ${displayOutput.stdout}`);
+const listFiles = await exec.getExecOutput('ls -la',[],{cwd: workingDirectory});
+core.info(`list of files in the current working directory is --------------- ${listFiles.stdout}`);
+
 if (gitStatus.stdout.length > 0){
  core.info('there are update availble')
 }else {
