@@ -55,7 +55,7 @@ if (gitStatus.stdout.length > 0){
  await exec.exec(`git push -u origin ${targetBranch} --force`,[],{...commonExecOpts,});
  const octokit = github.getOctokit(ghToken);
  try{
-  octokit.pulls.create({
+  await octokit.rest.pulls.create({
   owner: github.context.repo.owner,
   repo: github.context.repo.repo,
   title: `Update dependencies from ${baseBranch}`,
