@@ -12,7 +12,9 @@ on:
         type: string
         default: 17-custom-actions/react-app
 run-name: 17 - 2 - Custom Actions - JS | BB - ${{ inputs.base-branch }}  TB - ${{ inputs.target-branch }} - WD ${{ inputs.working-dir }} 
-
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   dependency-update:

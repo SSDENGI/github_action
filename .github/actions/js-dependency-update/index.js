@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
+const github = require('@actions/github')
 
 const validateBranchName = ({branchName}) => /^[a-zA-Z0-9_\-\.\/]+$/.test(branchName);
 const validateDirectoryName = ({dirName}) => /^[a-zA-Z0-9_\-\/]+$/.test(dirName);
@@ -11,6 +12,7 @@ async function run() {
   const ghToken = core.getInput('gh-token');
   const workingDirectory = core.getInput('working-directory');
   const debug = core.getBooleanInput('debug');
+  const commonExecOpts = {cwd: workingDirectory};
   core.setSecret(ghToken);
 
 if ( !validateBranchName({branchName: baseBranch})) {
@@ -35,15 +37,40 @@ await exec.exec('npm', ['update'], { cwd: workingDirectory });
 
 // await exec.exec('npm',[],{cwd: workingDirectory});
 
-const gitStatus = await exec.getExecOutput('git status -s package*.json',[],{cwd: workingDirectory});
+const gitStatus = await exec.getExecOutput('git status -s package*.json',[],{...commonExecOpts,});
 
-const displayOutput = await exec.getExecOutput("pwd",[],{cwd: workingDirectory});
+const displayOutput = await exec.getExecOutput("pwd",[],{...commonExecOpts,});
 core.info(`current working directory is --------------- ${displayOutput.stdout}`);
-const listFiles = await exec.getExecOutput('ls -la',[],{cwd: workingDirectory});
+const listFiles = await exec.getExecOutput('ls -la',[],{...commonExecOpts,});
 core.info(`list of files in the current working directory is --------------- ${listFiles.stdout}`);
 
+g
+
 if (gitStatus.stdout.length > 0){
- core.info('there are update availble')
+ core.info('there are update availble');
+ await exec.exec(`git config --global user.name "gh-actions"`);
+ await exec.exec(`git config --global user.email "gh-actions@users.noreply.github.com"`);
+ await exec.exec(`git checkout -b ${targetBranch}`,[],{...commonExecOpts,});
+ await exec.exec(`git add package.json package-lock.json`,[],{...commonExecOpts,});
+ await exec.exec(`git commit -m "chore: update dependencies"`,[],{...commonExecOpts,});
+ await exec.exec(`git push -u origin ${targetBranch} --force`,[],{...commonExecOpts,});
+ const octokit = github.getOctokit(ghToken);
+ try{
+  octokit.pulls.create({
+  owner: github.context.repo.owner,
+  repo: github.context.repo.repo,
+  title: `Update dependencies from ${baseBranch}`,
+  body: `this pull request update the dependencies `,
+  base: baseBranch,
+  head: targetBranch,
+ })
+}
+catch(e){
+  core.warning(`Failed to create pull request: ${e.message}`);
+  core.setFailed(e.messages)
+}
+ 
+
 }else {
   core.info('there are no update availble')
 }
