@@ -44,7 +44,6 @@ core.info(`current working directory is --------------- ${displayOutput.stdout}`
 const listFiles = await exec.getExecOutput('ls -la',[],{...commonExecOpts,});
 core.info(`list of files in the current working directory is --------------- ${listFiles.stdout}`);
 
-g
 
 if (gitStatus.stdout.length > 0){
  core.info('there are update availble');
