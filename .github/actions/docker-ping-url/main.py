@@ -16,11 +16,16 @@ def ping_url(url,delay,max_trials):
 
 def run():
     input_url = os.getenv("INPUT_URL")
-    input_delay = int(os.getenv("INPUT_DELAY"))
-    input_max_trials = int(os.getenv("INPUT_MAX_TRIALS"))
-    ping_url_return_val = ping_url(input_url,input_delay,input_max_trials)
-    if ping_url_return_val == False:
-        raise Exception("URL is not reachable after {} attempts".format(input_max_trials))
+    input_delay = os.getenv("INPUT_DELAY")
+    input_max_trials = os.getenv("INPUT_MAX_TRIALS")
+    print("Pinging URL: {}".format(input_url))
+    print("Delay between trials: {} seconds".format(input_delay))
+    if input_url != None and input_delay != None and input_max_trials != None:
+        ping_url_return_val = ping_url(input_url,int(input_delay),int(input_max_trials))
+        if ping_url_return_val == False:
+            raise Exception("URL is not reachable after {} attempts".format(input_max_trials))
+    else:
+        raise Exception("URL, delay and max_trials inputs are required")
 
 
 if __name__ == "__main__":
