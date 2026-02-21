@@ -20,6 +20,7 @@ def run():
     input_max_trials = os.getenv("INPUT_MAX_TRIALS")
     print("Pinging URL: {}".format(input_url))
     print("Delay between trials: {} seconds".format(input_delay))
+    print("Maximum number of trials: {}".format(input_max_trials))
     if input_url != None and input_delay != None and input_max_trials != None:
         ping_url_return_val = ping_url(input_url,int(input_delay),int(input_max_trials))
         if ping_url_return_val == False:
