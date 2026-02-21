@@ -6,6 +6,9 @@ inputs:
     required: true
   max-trials:
     description: "Maximum number of trials until action fails"
+    default: 10
+  delay:
+    description: "Delay in seconds between trials"
     default: 5
 
 runs: 
