@@ -1,6 +1,5 @@
 def ping_url(url,delay,max_trials):
     for trials in range(max_trials):
-        try:
             response = requests.get(url)
             if response.status_code == 200:
                 print("URL is reachable")
