@@ -1,14 +1,15 @@
 def ping_url(url,delay,max_trials):
     for trials in range(max_trials):
-            response = requests.get(url)
-            if response.status_code == 200:
-                print("URL is reachable")
-                return True
-            else:
-                sleep(delay)
-        if trials == (max_trials-1):
+        response = requests.get(url)
+        if response.status_code == 200:
+            print("URL is reachable")
+            return True
+        else:
+            sleep(delay)
+        if trials == (max_trials - 1):
             print("URL is not reachable after {} attempts".format(max_trials))
             return False
+    return False
 
 def run():
     input_url = os.getenv("INPUT_URL")
