@@ -6,7 +6,7 @@ def ping_url(url,delay,max_trials):
                 return True
             else:
                 sleep(delay)
-        if trials == max_trials - 1:
+        if trials == (max_trials-1):
             print("URL is not reachable after {} attempts".format(max_trials))
             return False
 
