@@ -1,3 +1,6 @@
+import os
+import requests
+from time import sleep
 def ping_url(url,delay,max_trials):
     for trials in range(max_trials):
         response = requests.get(url)
