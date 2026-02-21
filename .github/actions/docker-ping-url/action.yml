@@ -7,9 +7,11 @@ inputs:
   max-trials:
     description: "Maximum number of trials until action fails"
     default: 10
+    type: number
   delay:
     description: "Delay in seconds between trials"
     default: 5
+    type: number
 
 runs: 
   using: docker
