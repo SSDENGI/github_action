@@ -28,6 +28,8 @@ def run():
         ping_url_return_val = ping_url(input_url,int(input_delay),int(input_max_trials))
     else:
         print("URL, delay and max_trials inputs are required")
+    output_file = open(os.getenv("GITHUB_OUTPUT"), 'a')
+    output_file.write(f"url-reachable={ping_url_return_val}\n")
     if ping_url_return_val == True:
         print("URL is reachable.......")
     else: 
