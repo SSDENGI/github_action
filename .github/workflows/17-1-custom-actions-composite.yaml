@@ -23,11 +23,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Node and NPM Dependencies
+        id: setup-deps
         uses: ./.github/actions/composite-cache-deps
         with:
           node-version: '18.x'
           working-dir: ${{env.working-directory}}
           target-env: ${{inputs.target-env}}
+      - name: Print Setup Depencies output
+        run: |
+          echo "Installed Deps: ${{steps.setup-deps.outputs.installed-deps}}"
+          echo "Below Json Data is output of steps context"
+          echo "${{toJson(steps)}}"
       - name: test
         run: npm run test
       - name: build
