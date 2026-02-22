@@ -22,7 +22,6 @@ inputs:
 outputs:
   updates-available:
     description: "Whether there are updates available"
-    value: ${{ steps.check-for-updates.outputs.updates-available }}
 
 runs:
   using: node20

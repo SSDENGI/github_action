@@ -44,10 +44,10 @@ core.info(`current working directory is --------------- ${displayOutput.stdout}`
 const listFiles = await exec.getExecOutput('ls -la',[],{...commonExecOpts,});
 core.info(`list of files in the current working directory is --------------- ${listFiles.stdout}`);
 
-
+let updatesAvailable = false;
 if (gitStatus.stdout.length > 0){
  core.info('there are update availble');
- core.setOutput('updates-available', 'true');
+ updatesAvailable = true;
  await exec.exec(`git config --global user.name "gh-actions"`);
  await exec.exec(`git config --global user.email "gh-actions@users.noreply.github.com"`);
  await exec.exec(`git checkout -b ${targetBranch}`,[],{...commonExecOpts,});
@@ -74,6 +74,7 @@ catch(e){
 }else {
   core.info('there are no update availble')
 }
+core.setOutput('updates-available', updatesAvailable);
 }
 
 run();
