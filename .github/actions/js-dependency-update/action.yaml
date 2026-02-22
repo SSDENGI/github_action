@@ -19,6 +19,10 @@ inputs:
     description: Whether the output debug messages to the console.
     default: false
     required: false
+outputs:
+  updates-available:
+    description: "Whether there are updates available"
+    value: ${{ steps.check-for-updates.outputs.updates-available }}
 
 runs:
   using: node20
