@@ -23,11 +23,17 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v4
       - name: Check for dependency updates
+        id: update-deps
         uses: ./.github/actions/js-dependency-update
         with:
           base-branch: ${{ inputs.base-branch }}
           target-branch: ${{ inputs.target-branch}}
           working-directory: ${{ inputs.working-dir }}
           gh-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print custom action output
+        run: |
+          echo " Updates available:: ${{ steps.update-deps.outputs.updates-available }}"
+          echo " Below Json Data is output of steps context"
+          echo "${{toJson(steps)}}"
       - name: successful messages
         run: echo "successful"

@@ -47,6 +47,7 @@ core.info(`list of files in the current working directory is --------------- ${l
 
 if (gitStatus.stdout.length > 0){
  core.info('there are update availble');
+ core.setOutput('updates-available', 'true');
  await exec.exec(`git config --global user.name "gh-actions"`);
  await exec.exec(`git config --global user.email "gh-actions@users.noreply.github.com"`);
  await exec.exec(`git checkout -b ${targetBranch}`,[],{...commonExecOpts,});
