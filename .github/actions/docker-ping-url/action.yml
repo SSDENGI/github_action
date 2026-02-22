@@ -15,7 +15,7 @@ inputs:
 outputs:
   url-reachable:
     description: "Whether the URL is reachable or not"
-    # value: ${{github.output.url-reachable}}
+    value: ${{github.output.url-reachable}}
 
 runs: 
   using: docker
