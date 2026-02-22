@@ -12,6 +12,10 @@ inputs:
     description: "Delay in seconds between trials"
     default: 5
     type: number
+outputs:
+  url-reachable:
+    description: "Whether the URL is reachable or not"
+    value: ${{github.output.url-reachable}}
 
 runs: 
   using: docker
