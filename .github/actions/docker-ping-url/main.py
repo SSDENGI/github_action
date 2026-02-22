@@ -36,7 +36,7 @@ def run():
     else: 
         output_file.write(f"url-reachable={False}\n")
         print("URL is not reachable.......")
-
+    output_file.close()
 
 if __name__ == "__main__":
     print("Hello world")
