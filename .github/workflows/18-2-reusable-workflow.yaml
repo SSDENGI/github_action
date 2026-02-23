@@ -12,5 +12,6 @@ jobs:
     steps:
       - name: Print outputs
         run: |
-          echo "Build status: ${{needs.deploy.outputs.build-status}}"
-          echo "url: ${{needs.deploy.outputs.url}}"
+          echo "${{toJson(needs)}}"
+          echo "Build status: ${{needs.deploys.outputs.build-status}}"
+          echo "url: ${{needs.deploys.outputs.url}}"
