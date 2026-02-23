@@ -1,6 +1,6 @@
 name: 18 - 1 - Reusable Workflows - Reusable Definition
 on:
-  workflow-call:
+  workflow_call:
     inputs:
       target-directory:
         required: true
