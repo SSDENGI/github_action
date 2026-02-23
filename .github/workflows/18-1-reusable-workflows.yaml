@@ -8,10 +8,10 @@ on:
     outputs:
       build-status:
         description: 'The status of the build process'
-        value: ${{ jobs.deploy.outputs.build-status}}
+        value: ${{jobs.deploy.outputs.build-status}}
       url:
         description: 'The url of the deployed version'
-        value: ${{ jobs.deploy.outputs.url}}
+        value: ${{jobs.deploy.outputs.url}}
 
 jobs:
   deploy:
@@ -27,7 +27,7 @@ jobs:
         run: |
           echo "Building using directory ${{ inputs.target-directory }}"
           echo "build-status=sucess">> $GITHUB_OUTPUT
-      - name: Depoloy
+      - name: Deploy
         id: deploy
         run: |
           echo "Deploying build artifacts"
