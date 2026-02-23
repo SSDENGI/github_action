@@ -1,6 +1,6 @@
 name: 18 - 1 - Reusable Workflows - Reusable Definition
 on:
-  workflow-call:
+  workflow_call:
     inputs:
       target-directory:
         required: true
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       build-status: ${{steps.build.outputs.build-status}}
-      url: ${{steps.deploy.outputs.}
+      url: ${{steps.deploy.outputs.url}}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
