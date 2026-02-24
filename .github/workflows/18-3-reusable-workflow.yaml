@@ -12,3 +12,5 @@ jobs:
     uses: SSDENGI/github-actions-course-example-e2/.github/workflows/resuable_workflow.yml@main
     with:
       name: shankar
+    secrets:
+      token: ${{secrets.GH_TOKEN}}
