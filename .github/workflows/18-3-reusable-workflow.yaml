@@ -9,6 +9,6 @@ jobs:
         run: echo "Deploying to production environment"
   call_workflow:
     needs: deploys
-    uses: SSDENGI/github-actions-course-example-e2/.github/workflows/reusable_workflow.yaml@main
+    uses: SSDENGI/github-actions-course-example-e2/.github/workflows/resuable_workflow.yml@main
     with:
       name: shankar
