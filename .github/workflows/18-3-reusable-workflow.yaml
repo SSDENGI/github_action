@@ -1,0 +1,14 @@
+name: Reusing workflows with inputs and outputs
+on:
+  workflow_dispatch:
+jobs:
+  deploys:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploying to production
+        run: echo "Deploying to production environment"
+  call_workflow:
+    needs: deploys
+    uses: SSDENGI/github-actions-course-example-e2/.github/workflows/resuable_workflow.yaml@main
+    with:
+      name: shankar
