@@ -23,7 +23,7 @@ jobs:
     env:
       title: ${{github.event.pull_request.title}}
     steps:
-      - name: checkout codes
+      - name: checkout code
         uses: actions/checkout@v4
       - name: Check PR title
         run: |
