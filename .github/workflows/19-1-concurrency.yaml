@@ -12,7 +12,7 @@ jobs:
         id: ping
         uses: ./.github/actions/docker-ping-url
         with:
-          url: https://www.google.com
+          url: https://www.googlesssssss.com
           max-trials: 20
           delay: 5
       - name: check ping result
