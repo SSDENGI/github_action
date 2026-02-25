@@ -6,7 +6,7 @@ jobs:
   unsafe-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout code
+      - name: checkout codes
         uses: actions/checkout@v4
       - name: Check PR title
         run: |
