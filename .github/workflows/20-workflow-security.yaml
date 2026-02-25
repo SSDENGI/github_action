@@ -18,7 +18,7 @@ jobs:
             echo "this is not feature"
             exit 1
           fi
- safe-pr:
+  safe-pr:
     runs-on: ubuntu-latest
     env:
       title: ${{github.event.pull_request.title}}
@@ -32,5 +32,5 @@ jobs:
             exit 0
           else
             echo "this is not feature"
-            exit 1
-          fi
+                exit 1
+              fi
