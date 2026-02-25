@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const { run } = require('node:test');
 
 
 async function run(){
