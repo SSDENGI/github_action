@@ -6,12 +6,12 @@ jobs:
   unsafe-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout codes
+      - name: checkout code
         uses: actions/checkout@v4
       - name: Check PR title
         run: |
-          title = ${{github.event.pull_request.title}}
-          if [[$title =~ ^feat]];then
+          title=${{github.event.pull_request.title}}
+          if [[ $title =~ ^feat ]];then
             echo "this is feature"
             exit 0
           else
