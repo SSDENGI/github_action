@@ -11,7 +11,7 @@ jobs:
       - name: Check PR title
         run: |
           title = ${{github.event.pull_request.title}}
-          if [[ $title == ~ ^feat ]]; then
+          if [[ $title =~ ^feat ]]; then
             echo "this is feature"
             exit 0
           else
